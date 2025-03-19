@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgaksstbkgkw8"]
+
+[ext_resource type="Script" uid="uid://4ukmk83lwdbg" path="res://VectorDraw.gd" id="1_al4ha"]
+
+[node name="VectorDrawer" type="Node2D"]
+script = ExtResource("1_al4ha")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

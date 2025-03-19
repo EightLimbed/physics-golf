@@ -7,12 +7,12 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("Launch"):
-		apply_central_impulse(-get_local_mouse_position())
+		apply_central_impulse(-get_local_mouse_position()*2)
 
 func _on_body_entered(_body: Node) -> void:
 	game.vectors.append(position)

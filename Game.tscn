@@ -8,9 +8,11 @@
 script = ExtResource("1_u44n3")
 
 [node name="Ball" parent="." instance=ExtResource("1_wbfu4")]
+linear_damp = 0.5
 
 [node name="Camera2D" type="Camera2D" parent="Ball"]
 visible = false
+position_smoothing_enabled = true
 
 [node name="Map" parent="." instance=ExtResource("2_xkndl")]
 
