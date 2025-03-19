@@ -1,14 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://jj2ii3lkcfr5"]
+[gd_scene load_steps=5 format=3 uid="uid://jj2ii3lkcfr5"]
 
+[ext_resource type="Script" uid="uid://dtxanybyr10vv" path="res://Ball.gd" id="1_0erf7"]
 [ext_resource type="Texture2D" uid="uid://cbqk5gontdljt" path="res://Golf Ball.png" id="1_gk6bx"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lww6v"]
-radius = 32.0
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lww6v"]
+friction = 0.0
+bounce = 1.0
 
-[node name="Ball" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lww6v"]
+size = Vector2(64, 64)
+
+[node name="Ball" type="RigidBody2D"]
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_lww6v")
+gravity_scale = 0.0
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp = 1.0
+angular_damp = 100.0
+script = ExtResource("1_0erf7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_gk6bx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_lww6v")
+shape = SubResource("RectangleShape2D_lww6v")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
