@@ -22,25 +22,25 @@ func cartesian_to_kinematics(df : Vector2):
 	if dir < 0:
 		dir += 360
 	if dir == 0:
-		return str(round(df.length()))+"m [W]"
+		return str(round(df.length()/100))+"m [W]"
 	elif 90 > dir and dir > 0:
-		return str(round(df.length()))+"m [W "+str(dir)+"\u00B0 N]"
+		return str(round(df.length()/100))+"m [W "+str(dir)+"\u00B0 N]"
 	elif dir == 90:
-		return str(round(df.length()))+"m [N]"
+		return str(round(df.length()/100))+"m [N]"
 	elif 180 > dir and dir > 90:
-		return str(round(df.length()))+"m [N "+str(dir-90)+"\u00B0 E]"
+		return str(round(df.length()/100))+"m [N "+str(dir-90)+"\u00B0 E]"
 	elif dir == 180:
-		return str(round(df.length()))+"m [E]"
+		return str(round(df.length()/100))+"m [E]"
 	elif 270 > dir and dir > 180:
-		return str(round(df.length()))+"m [W "+str(dir)+"\u00B0 N]"
+		return str(round(df.length()/100))+"m [W "+str(dir)+"\u00B0 N]"
 	elif dir == 270:
-		return str(round(df.length()))+"m [S]"
+		return str(round(df.length()/100))+"m [S]"
 	elif 360 > dir and dir > 270:
-		return str(round(df.length()))+"m [N "+str(dir-90)+"\u00B0 E]"
+		return str(round(df.length()/100))+"m [N "+str(dir-90)+"\u00B0 E]"
 
 func _draw() -> void:
 	vectors.append(ball.position)
 	if vectors.size() > 1:
 		draw_polyline(vectors, Color.AQUAMARINE, 2, true)
-		draw_line(vectors[0],ball.position, Color.BLUE, 4)
+		draw_line(vectors[0],ball.position, Color.BLUE, 4, true)
 	vectors.remove_at(vectors.size()-1)

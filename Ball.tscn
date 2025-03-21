@@ -12,6 +12,7 @@ size = Vector2(64, 64)
 
 [node name="Ball" type="RigidBody2D"]
 collision_layer = 2
+input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_lww6v")
 gravity_scale = 0.0
 lock_rotation = true
@@ -28,3 +29,4 @@ texture = ExtResource("1_gk6bx")
 shape = SubResource("RectangleShape2D_lww6v")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
