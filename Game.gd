@@ -1,52 +1,54 @@
 extends Node2D
 
 var vectors : Array[Vector2] = []
+var vectors_totals : Array[Vector2] = []
 var vectors_kinematics : Array[String] = []
+var vectors_kinematics_totals : Array[String] = []
 @onready var ball = $Ball
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		for i in vectors.size()-1:
-			display_vector(vectors[i],vectors[i+1])
-		if vectors.size() > 1:
-			display_vector(vectors[0],vectors[vectors.size()-1])
-		queue_redraw()
+func update_vectors_display(): 
+	queue_redraw()
+	$HUD.display_holes(vectors_kinematics_totals)
 
-func display_vector(d1 : Vector2,d2 : Vector2):
-	vectors_kinematics.append(cartesian_to_kinematics(d1+d2))
-	#var label = Label.new()
-	#label.text = cartesian_to_kinematics(d1+d2)
-	#label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	#add_child(label)
-
-func cartesian_to_kinematics(df : Vector2):
+func cartesian_to_kinematics(df : Vector2, shot):
 	var dir = rad_to_deg(df.angle())
 	if dir < 0:
 		dir += 360
 	if round(dir) == 0:
-		return str(round(df.length()/100))+"m [W]"
+		return "Shot "+str(shot)+": "+str(round(df.length()/10)/10)+"m [E]"
 	elif 90 > dir and dir > 0:
-		return str(round(df.length()/100))+"m [E "+str(round(dir))+"\u00B0 S]"
+		return "Shot "+str(shot)+": "+str(round(df.length()/10)/10)+"m [E "+str(round(dir))+"\u00B0 S]"
 	elif round(dir) == 90:
-		return str(round(df.length()/100))+"m [S]"
+		return "Shot "+str(shot)+": "+str(round(df.length()/10)/10)+"m [S]"
 	elif 180 > dir and dir > 90:
-		return str(round(df.length()/100))+"m [S "+str(round(dir-90))+"\u00B0 W]"
+		return "Shot "+str(shot)+": "+str(round(df.length()/10)/10)+"m [S "+str(round(dir-90))+"\u00B0 W]"
 	elif round(dir) == 180:
-		return str(round(df.length()/100))+"m [E]"
+		return "Shot "+str(shot)+": "+str(round(df.length()/10)/10)+"m [W]"
 	elif 270 > dir and dir > 180:
-		return str(round(df.length()/100))+"m [W "+str(round(dir-180))+"\u00B0 N]"
+		return "Shot "+str(shot)+": "+str(round(df.length()/10)/10)+"m [W "+str(round(dir-180))+"\u00B0 N]"
 	elif round(dir) == 270:
-		return str(round(df.length()/100))+"m [N]"
+		return "Shot "+str(shot)+": "+str(round(df.length()/10)/10)+"m [N]"
 	elif 360 > dir and dir > 270:
-		return str(round(df.length()/100))+"m [N "+str(round(dir-270))+"\u00B0 E]"
+		return "Shot "+str(shot)+": "+str(round(df.length()/10)/10)+"m [N "+str(round(dir-270))+"\u00B0 E]"
 
 func _draw() -> void:
+	for i in (vectors.size()-vectors_kinematics.size())/2:
+		vectors_kinematics.append(cartesian_to_kinematics(vectors[i+vectors_kinematics.size()-1]+vectors[i+vectors_kinematics.size()], ball.shot))
+	for i in (vectors_totals.size()-vectors_kinematics_totals.size())/2:
+		vectors_kinematics_totals.append(cartesian_to_kinematics(vectors_totals[i+vectors_kinematics_totals.size()-1]+vectors_totals[i+vectors_kinematics_totals.size()], ball.shot))
 	vectors.append(ball.position)
+	vectors_totals.append(ball.position)
 	if vectors.size() > 1:
 		for i in vectors.size()-1:
 			if round(i/2.0) == i/2.0:
 				draw_line(vectors[i], vectors[i+1], Color.AQUAMARINE, 2, true)
 			else:
 				draw_line(vectors[i], vectors[i+1], Color.GREEN, 2, true)
-		draw_line(vectors[0],ball.position, Color.BLUE, 4, true)
+	if vectors_totals.size() > 1:
+		for i in vectors_totals.size()-1:
+			if round(i/2.0) == i/2.0:
+				draw_line(vectors_totals[i], vectors_totals[i+1], Color.BLUE, 4, true)
+			else:
+				draw_line(vectors_totals[i], vectors_totals[i+1], Color.DARK_BLUE, 4, true)
 	vectors.remove_at(vectors.size()-1)
+	vectors_totals.remove_at(vectors_totals.size()-1)

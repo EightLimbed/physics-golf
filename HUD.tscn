@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds3jbasd4jyb4"]
+
+[ext_resource type="Script" uid="uid://bj2poots6v7y8" path="res://HUD.gd" id="1_k5de2"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_k5de2")
+
+[node name="Holes" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(256, 224)
+offset_left = 896.0
+offset_top = 424.0
+offset_right = 1152.0
+offset_bottom = 648.0

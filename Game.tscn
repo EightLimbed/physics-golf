@@ -1,14 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3x034j87cgby"]
+[gd_scene load_steps=5 format=3 uid="uid://b3x034j87cgby"]
 
 [ext_resource type="Script" uid="uid://bppnjggsfpci1" path="res://Game.gd" id="1_u44n3"]
 [ext_resource type="PackedScene" uid="uid://jj2ii3lkcfr5" path="res://Ball.tscn" id="1_wbfu4"]
 [ext_resource type="PackedScene" uid="uid://dkppqv6o7tj1c" path="res://Map.tscn" id="2_xkndl"]
+[ext_resource type="PackedScene" uid="uid://ds3jbasd4jyb4" path="res://HUD.tscn" id="4_sb48q"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_u44n3")
 
 [node name="Ball" parent="." instance=ExtResource("1_wbfu4")]
-linear_damp = 0.5
 
 [node name="Camera2D" type="Camera2D" parent="Ball"]
 visible = false
@@ -18,3 +18,5 @@ position_smoothing_enabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
+
+[node name="HUD" parent="." instance=ExtResource("4_sb48q")]
