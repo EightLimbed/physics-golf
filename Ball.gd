@@ -12,6 +12,7 @@ func _process(_delta: float) -> void:
 	if linear_velocity.length() < 64 or linear_velocity.length() < -64:
 		if linear_velocity != Vector2.ZERO:
 			game.vectors_totals.append(position)
+			game.update_shot_summary()
 		linear_velocity = Vector2.ZERO
 	if launch_ready:
 		queue_redraw()
@@ -21,12 +22,13 @@ func _process(_delta: float) -> void:
 		$Sprite2D2.rotation = get_local_mouse_position().angle()-PI/2
 		$Label.text = cartesian_to_kinematics(-get_local_mouse_position())
 	else:
-		game.update_vectors_display()
 		$Label.hide()
 		$Sprite2D2.hide()
+		game.update_vectors_display()
 
 func _on_body_entered(_body: Node) -> void:
 	game.vectors.append(position)
+	game.update_shot_summary()
 
 func _draw() -> void:
 	if launch_ready:
