@@ -7,7 +7,10 @@ var shot : int = 0
 func _ready() -> void:
 	reset(Vector2(0,0))
 
-func hit_goal():
+func hit_goal(pos):
+	sleeping = true
+	position = pos
+	sleeping = false
 	linear_velocity = Vector2.ZERO
 	game.vectors_totals.append(position)
 	game.update_shot_summary()
@@ -48,21 +51,21 @@ func cartesian_to_kinematics(df : Vector2):
 	if dir < 0:
 		dir += 360
 	if round(dir) == 0:
-		return str(round(df.length()/10)/10)+"m/s [E]"
+		return str(round(df.length())/10)+"m/s [E]"
 	elif 90 > dir and dir > 0:
-		return str(round(df.length()/10)/10)+"m/s [E "+str(round(dir))+"\u00B0 S]"
+		return str(round(df.length())/10)+"m/s [E "+str(round(dir))+"\u00B0 S]"
 	elif round(dir) == 90:
-		return str(round(df.length()/10)/10)+"m/s [S]"
+		return str(round(df.length())/10)+"m/s [S]"
 	elif 180 > dir and dir > 90:
-		return str(round(df.length()/10)/10)+"m/s [S "+str(round(dir-90))+"\u00B0 W]"
+		return str(round(df.length())/10)+"m/s [S "+str(round(dir-90))+"\u00B0 W]"
 	elif round(dir) == 180:
-		return str(round(df.length()/10)/10)+"m/s [W]"
+		return str(round(df.length())/10)+"m/s [W]"
 	elif 270 > dir and dir > 180:
-		return str(round(df.length()/10)/10)+"m/s [W "+str(round(dir-180))+"\u00B0 N]"
+		return str(round(df.length())/10)+"m/s [W "+str(round(dir-180))+"\u00B0 N]"
 	elif round(dir) == 270:
-		return str(round(df.length()/10)/10)+"m/s [N]"
+		return str(round(df.length())/10)+"m/s [N]"
 	elif 360 > dir and dir > 270:
-		return str(round(df.length()/10)/10)+"m/s [N "+str(round(dir-270))+"\u00B0 E]"
+		return str(round(df.length())/10)+"m/s [N "+str(round(dir-270))+"\u00B0 E]"
 
 func _on_texture_button_button_down() -> void:
 	if linear_velocity == Vector2.ZERO:

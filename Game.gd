@@ -29,21 +29,21 @@ func cartesian_to_kinematics(df : Vector2, shot):
 	if dir < 0:
 		dir += 360
 	if round(dir) == 0:
-		return "Shot "+str(shot)+": "+str(round(df.length()/10)/10)+"m [E]"
+		return "Shot "+str(shot)+": "+str(round(df.length())/10)+"m [E]"
 	elif 90 > dir and dir > 0:
-		return "Shot "+str(shot)+": "+str(round(df.length()/10)/10)+"m [E "+str(round(dir))+"\u00B0 S]"
+		return "Shot "+str(shot)+": "+str(round(df.length())/10)+"m [E "+str(round(dir))+"\u00B0 S]"
 	elif round(dir) == 90:
-		return "Shot "+str(shot)+": "+str(round(df.length()/10)/10)+"m [S]"
+		return "Shot "+str(shot)+": "+str(round(df.length())/10)+"m [S]"
 	elif 180 > dir and dir > 90:
-		return "Shot "+str(shot)+": "+str(round(df.length()/10)/10)+"m [S "+str(round(dir-90))+"\u00B0 W]"
+		return "Shot "+str(shot)+": "+str(round(df.length())/10)+"m [S "+str(round(dir-90))+"\u00B0 W]"
 	elif round(dir) == 180:
-		return "Shot "+str(shot)+": "+str(round(df.length()/10)/10)+"m [W]"
+		return "Shot "+str(shot)+": "+str(round(df.length())/10)+"m [W]"
 	elif 270 > dir and dir > 180:
-		return "Shot "+str(shot)+": "+str(round(df.length()/10)/10)+"m [W "+str(round(dir-180))+"\u00B0 N]"
+		return "Shot "+str(shot)+": "+str(round(df.length())/10)+"m [W "+str(round(dir-180))+"\u00B0 N]"
 	elif round(dir) == 270:
-		return "Shot "+str(shot)+": "+str(round(df.length()/10)/10)+"m [N]"
+		return "Shot "+str(shot)+": "+str(round(df.length())/10)+"m [N]"
 	elif 360 > dir and dir > 270:
-		return "Shot "+str(shot)+": "+str(round(df.length()/10)/10)+"m [N "+str(round(dir-270))+"\u00B0 E]"
+		return "Shot "+str(shot)+": "+str(round(df.length())/10)+"m [N "+str(round(dir-270))+"\u00B0 E]"
 
 func _draw() -> void:
 	vectors.append(ball.position)

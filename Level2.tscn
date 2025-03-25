@@ -126,13 +126,14 @@ points = PackedVector2Array(-64, 0, 64, 0, 0, 96)
 
 [node name="Level2" type="Node2D"]
 texture_filter = 1
+position = Vector2(-122, -38)
 script = ExtResource("1_q04gf")
 
 [node name="Slowdown" type="Area2D" parent="."]
 position = Vector2(-393, -945)
 collision_mask = 2
 linear_damp_space_override = 1
-linear_damp = 5.0
+linear_damp = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Slowdown"]
 shape = SubResource("RectangleShape2D_psxy2")
@@ -153,7 +154,7 @@ text = "SLOWDOWN"
 position = Vector2(-382, -534)
 collision_mask = 2
 linear_damp_space_override = 1
-linear_damp = 5.0
+linear_damp = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Slowdown2"]
 shape = SubResource("RectangleShape2D_psxy2")
@@ -174,14 +175,14 @@ text = "SLOWDOWN"
 tile_map_data = PackedByteArray("AAD4//f/AAAAAAAAAAD3//r/AAACAAIAAAD7//f/AAADAAAAAAD7//b/AAACAAIAAAD4//b/AAACAAIAAAD3//n/AAACAAIAAAD3//j/AAACAAIAAAD3//f/AAABAAMAAAD8//f/AAABAAMAAAD8//j/AAACAAIAAAD8//n/AAACAAIAAAD8//r/AAACAAIAAAD8//v/AAAAAAAAAAD7//v/AAABAAEAAAD6//v/AAABAAEAAAD5//v/AAABAAEAAAD4//v/AAABAAEAAAD3//v/AAADAAAAAAD7//X/AAACAAIAAAD7//T/AAACAAIAAAD7//P/AAACAAIAAAD7//L/AAACAAIAAAD7//H/AAADAAMAAAD4//X/AAACAAIAAAD4//T/AAACAAIAAAD4//P/AAACAAIAAAD4//L/AAACAAIAAAD4//H/AAAAAAMAAAD8//H/AAABAAEAAAD9//H/AAABAAEAAAD+//H/AAAAAAMAAAD+//L/AAACAAIAAAD+//P/AAACAAIAAAD+//T/AAACAAIAAAD+//X/AAACAAIAAAD9//f/AAABAAEAAAD+//b/AAACAAIAAAD+//f/AAAAAAIAAAD2//f/AAABAAEAAAD1//f/AAADAAIAAAD1//b/AAACAAIAAAD1//X/AAACAAIAAAD1//T/AAACAAIAAAD1//P/AAACAAIAAAD1//L/AAACAAIAAAD1//H/AAADAAMAAAD2//H/AAABAAEAAAD3//H/AAABAAEAAAD+//j/AAACAAIAAAD+//n/AAADAAAAAAD///n/AAABAAEAAAAAAPn/AAABAAEAAAABAPn/AAABAAEAAAACAPn/AAABAAEAAAADAPn/AAAAAAAAAAADAPj/AAACAAIAAAADAPf/AAACAAIAAAADAPb/AAACAAIAAAADAPX/AAACAAIAAAADAPT/AAACAAIAAAADAPP/AAACAAIAAAADAPL/AAACAAIAAAADAPH/AAACAAIAAAADAPD/AAACAAIAAAADAO//AAACAAIAAAADAO7/AAACAAIAAAADAO3/AAAAAAMAAAACAO3/AAABAAEAAAABAO3/AAABAAEAAAAAAO3/AAABAAEAAAD//+3/AAABAAEAAAD+/+3/AAABAAEAAAD9/+3/AAABAAEAAAD8/+3/AAABAAEAAAD7/+3/AAABAAEAAAD6/+3/AAABAAEAAAD5/+3/AAABAAEAAAD4/+3/AAABAAEAAAD3/+3/AAABAAEAAAD2/+3/AAABAAEAAAD1/+3/AAABAAEAAAD0/+3/AAABAAEAAADz/+3/AAABAAEAAADy/+3/AAABAAEAAADx/+3/AAADAAMAAADx/+7/AAACAAIAAADx/+//AAACAAIAAADx//D/AAACAAIAAADx//H/AAACAAIAAADx//L/AAACAAIAAADx//P/AAACAAIAAADx//T/AAACAAIAAADx//X/AAACAAIAAADx//b/AAACAAIAAADx//f/AAACAAIAAADx//j/AAACAAIAAADx//n/AAADAAAAAADy//n/AAABAAEAAADz//n/AAABAAEAAAD0//n/AAABAAEAAAD1//n/AAAAAAAAAAD1//j/AAACAAIAAAA=")
 tile_set = SubResource("TileSet_ec2vu")
 
-[node name="Hole" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
 position = Vector2(51, -523)
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hole"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_kyxg0")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hole"]
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 texture = ExtResource("3_s8dg4")
 
 [node name="Penalty" type="Area2D" parent="."]
@@ -259,7 +260,7 @@ offset_bottom = 32.9691
 rotation = 0.0300714
 text = "+1 SHOT"
 
-[connection signal="body_entered" from="Hole" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Penalty" to="Penalty" method="_on_body_entered"]
 [connection signal="body_entered" from="Penalty2" to="Penalty2" method="_on_body_entered"]
 [connection signal="body_entered" from="Penalty3" to="Penalty3" method="_on_body_entered"]

@@ -133,7 +133,7 @@ position = Vector2(-105, -150)
 rotation = 0.536518
 collision_mask = 2
 linear_damp_space_override = 1
-linear_damp = 5.0
+linear_damp = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Slowdown"]
 shape = SubResource("RectangleShape2D_dn5ey")
@@ -181,7 +181,7 @@ tile_map_data = PackedByteArray("AAD2//v/AAABAAMAAAD2//z/AAADAAAAAAD3//b/AAABAAE
 tile_set = SubResource("TileSet_ec2vu")
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(-480, -487)
+position = Vector2(-585, -458)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
