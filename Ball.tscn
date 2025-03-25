@@ -9,7 +9,7 @@ friction = 0.0
 bounce = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lww6v"]
-size = Vector2(48, 48)
+size = Vector2(24, 24)
 
 [node name="Ball" type="RigidBody2D"]
 collision_layer = 2
@@ -23,6 +23,7 @@ angular_damp = 100.0
 script = ExtResource("1_0erf7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_gk6bx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -5,6 +5,15 @@ var launch_ready : bool = false
 var shot : int = 0
 
 func _ready() -> void:
+	reset(Vector2(0,0))
+
+func hit_goal():
+	linear_velocity = Vector2.ZERO
+	game.vectors_totals.append(position)
+	game.update_shot_summary()
+
+func reset(pos):
+	linear_velocity = Vector2.ZERO
 	game.vectors.append(position)
 	game.vectors_totals.append(position)
 
