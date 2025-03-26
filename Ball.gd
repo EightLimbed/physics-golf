@@ -6,22 +6,22 @@ var shot : int = 0
 var launches : Array[String] = []
 
 func _ready() -> void:
-	reset(Vector2(0,0))
+	reset()
 
 func hit_goal(pos):
 	linear_velocity = Vector2.ZERO
-	sleeping = true
-	position = pos
-	sleeping = false
+	global_transform.origin = pos
 	game.vectors_totals.append(position)
 	game.update_shot_summary()
+	hide()
 
-func reset(pos):
+func reset():
 	linear_velocity = Vector2.ZERO
-	launches = []
-	shot = 0
 	game.vectors.append(position)
 	game.vectors_totals.append(position)
+	launches = []
+	shot = 0
+	show()
 
 func _process(_delta: float) -> void:
 	if linear_velocity.length() < 64 or linear_velocity.length() < -64:

@@ -8,7 +8,7 @@ func display_shots(vectors : Array[String]):
 	var display = ""
 	for v in vectors:
 		display += v+"\n"
-	$Shots.text = display
+	$Shots.text = display+str(get_parent().total_displacement())
 
 func display_launches(vectors : Array[String]):
 	var display = ""
@@ -38,6 +38,6 @@ func _on_button_pressed() -> void:
 	$LevelComplete.hide()
 	$Button.hide()
 	get_parent().reset()
-	ball.reset(Vector2.ZERO)
+	ball.reset()
 	get_parent().get_child(get_parent().get_child_count()-1).queue_free()
 	get_parent().add_child(levels[current_level].instantiate())

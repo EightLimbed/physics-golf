@@ -24,7 +24,7 @@ func reset():
 	vectors_kinematics_totals  = []
 	update_vectors_display()
 
-func cartesian_to_kinematics(df : Vector2, shot):
+func cartesian_to_kinematics(df : Vector2, shot = "total"):
 	var dir = rad_to_deg(df.angle())
 	if dir < 0:
 		dir += 360
@@ -66,3 +66,7 @@ func _draw() -> void:
 			draw_line(vectors_totals[i]-Vector2(0,32),vectors_totals[i]+Vector2(0,32), Color.BLACK, 1, true)
 	vectors.remove_at(vectors.size()-1)
 	vectors_totals.remove_at(vectors_totals.size()-1)
+	draw_line(vectors_totals[0]-Vector2(32,0),vectors_totals[vectors_totals.size()-1]+Vector2(32,0), Color.HOT_PINK, 1, true)
+
+func total_displacement():
+	return cartesian_to_kinematics(vectors_totals[0]-vectors_totals[vectors_totals.size()-1])

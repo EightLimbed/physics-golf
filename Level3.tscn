@@ -126,7 +126,7 @@ points = PackedVector2Array(-64, 0, 64, 0, 0, 96)
 
 [node name="Level3" type="Node2D"]
 texture_filter = 1
-position = Vector2(-14, 0)
+position = Vector2(-104, -8)
 script = ExtResource("1_84iim")
 
 [node name="Slowdown" type="Area2D" parent="."]
