@@ -10,6 +10,12 @@ func display_shots(vectors : Array[String]):
 		display += v+"\n"
 	$Shots.text = display
 
+func display_launches(vectors : Array[String]):
+	var display = ""
+	for v in vectors:
+		display += v+"\n"
+	$Launches.text = display
+
 func display_bounces(vectors : Array[String]):
 	var display = ""
 	for v in vectors:
@@ -24,7 +30,10 @@ func level_completed():
 	$Button.show()
 
 func _on_button_pressed() -> void:
-	if not current_level < levels.size()-1:
+	$Shots.text = ""
+	$Launches.text = ""
+	$Bounces.text = ""
+	if current_level > levels.size():
 		get_tree().change_scene_to_file("res://WinScreen.tscn")
 	$LevelComplete.hide()
 	$Button.hide()

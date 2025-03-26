@@ -32,12 +32,31 @@ text = "Level Completed in 9999 Shots. Good Job!"
 label_settings = SubResource("LabelSettings_vow1y")
 horizontal_alignment = 1
 
+[node name="Label3" type="Label" parent="."]
+custom_minimum_size = Vector2(288, 16)
+offset_left = 864.0
+offset_right = 1152.0
+offset_bottom = 34.0
+text = "Launch Vectors:"
+label_settings = SubResource("LabelSettings_k5de2")
+horizontal_alignment = 1
+
 [node name="Shots" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(256, 224)
 offset_left = 896.0
 offset_top = 424.0
 offset_right = 1152.0
 offset_bottom = 648.0
+focus_mode = 2
+text = "wadawdawdawd"
+selection_enabled = true
+
+[node name="Launches" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(256, 224)
+offset_left = 896.0
+offset_top = 36.0
+offset_right = 1152.0
+offset_bottom = 260.0
 focus_mode = 2
 text = "wadawdawdawd"
 selection_enabled = true

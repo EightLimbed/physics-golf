@@ -3,20 +3,23 @@ extends RigidBody2D
 @onready var game = get_parent()
 var launch_ready : bool = false
 var shot : int = 0
+var launches : Array[String] = []
 
 func _ready() -> void:
 	reset(Vector2(0,0))
 
 func hit_goal(pos):
+	linear_velocity = Vector2.ZERO
 	sleeping = true
 	position = pos
 	sleeping = false
-	linear_velocity = Vector2.ZERO
 	game.vectors_totals.append(position)
 	game.update_shot_summary()
 
 func reset(pos):
 	linear_velocity = Vector2.ZERO
+	launches = []
+	shot = 0
 	game.vectors.append(position)
 	game.vectors_totals.append(position)
 
@@ -77,4 +80,6 @@ func _on_texture_button_button_up() -> void:
 			shot += 1
 			apply_central_impulse(-get_local_mouse_position()*2)
 			queue_redraw()
+			launches.append("Shot " + str(shot) + ": "+cartesian_to_kinematics(-get_local_mouse_position()))
+			game.get_node("HUD").display_launches(launches)
 		launch_ready = false
