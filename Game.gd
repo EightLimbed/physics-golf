@@ -18,11 +18,11 @@ func update_shot_summary():
 		vectors_kinematics_totals.append(cartesian_to_kinematics(vectors_totals[i+vectors_kinematics_totals.size()+1]-vectors_totals[i+vectors_kinematics_totals.size()], ball.shot))
 
 func reset():
+	update_vectors_display()
 	vectors = []
 	vectors_totals = []
 	vectors_kinematics = []
 	vectors_kinematics_totals  = []
-	update_vectors_display()
 
 func cartesian_to_kinematics(df : Vector2, shot = "total"):
 	var dir = rad_to_deg(df.angle())
