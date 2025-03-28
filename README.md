@@ -1,7 +1,9 @@
-Plans for demo thing
+Kinematics golf game made for physics class.
 
-4 levels
+Drag to launch ball at desired velocity. (like Angry Birds)
 
-Ball is shot, with visualized vector label for launch velocity (degrees relative to N,S,E,W, and magnitude)
-Moves and bounces off of walls to get into hole, or stops. After reaching a stop, visualize displacement vector arrows. Have various features required from lab that effect velocity (sand traps for slowing etc.)
-Use tilemaps for map creation.
+Bounces, Total shot displacements, total displacement, and launch velocities will be recorded.
+
+Vectors will also be displayed. Green for bounces, blue for shots, yellow for velocity, and pink for total.
+
+There are penalties that add a shot to your score, and slowdown areas that increase velocity damping.
